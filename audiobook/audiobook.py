@@ -5,6 +5,28 @@ import os
 from tempfile import NamedTemporaryFile
 from googletrans import Translator
 
+# Streamlit UI
+st.set_page_config(page_title="PDF to Audiobook", layout="centered")
+st.markdown("""
+    <style>
+    body, .stApp {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    .stButton>button, .stDownloadButton>button {
+        background-color: #1f77b4;
+        color: white;
+    }
+    .stTextInput>div>div>input, .stNumberInput>div>input, .stSelectbox>div>div>div {
+        background-color: #333333;
+        color: white;
+    }
+    .stMarkdown {
+        color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Supported language map
 LANGUAGES = {
     "English": "en",
@@ -47,8 +69,7 @@ def text_to_speech(text, lang):
     tts.save(temp_file.name)
     return temp_file.name
 
-# Streamlit UI
-st.set_page_config(page_title="PDF to Audiobook", layout="centered")
+
 st.title("📘 PDF to Audiobook")
 st.markdown("Convert your PDF into an audiobook with multi-language support!")
 
